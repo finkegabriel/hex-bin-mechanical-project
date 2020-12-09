@@ -1,25 +1,24 @@
-module cylin(){
-rotate([90,0,0])
-    cylinder(h=177.8,r1=60,r2=60);
-}
+$fn=100;
+
 
 difference(){
-cylin();
+    rotate([90,0,0])
+    cylinder(h=177.8,r1=60,r2=60);
 rotate([90,0,0])
     translate([0,0,-10])
         cylinder(h=200.8,r1=40,r2=40);
 }
 
+
 module contactF(ydis,rot,z){
+    difference(){
 translate([rot,ydis,z])
     rotate([90,0,0])
         cylinder(h=10.8,r1=15,r2=15);
-}
-
-module contactmain(scale){
-translate([-50,0-160,0])
-    rotate([90,0,0])
-        cylinder(h=10.8,r1=scale,r2=scale);
+        
+translate([0,-15,0])
+    cylinder(h=500.8,r1=3,r2=3);
+        }
 }
 
 //15
@@ -27,6 +26,8 @@ contactF(-10,-50,0);
 contactF(-60,-50,0);
 contactF(-100,-50,0);
 contactF(-140,-50,0);
+
+
 
 //14
 contactF(-10,-48,20);
@@ -108,6 +109,7 @@ contactF(-140,-40,-36);
 
 //0
 
-
 translate([50,0,0])
-    contactmain(70);
+    translate([-50,0-160,0])
+        rotate([90,0,0])
+        cylinder(h=10.8,r1=70,r2=70);
